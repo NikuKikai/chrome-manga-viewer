@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Manga Viewer",
-  "version": "0.1.0",
-  "description": "Read separate manga page images on SNS with a book-like viewer. Currently only supports weibo.",
+  "version": "0.1.1",
+  "description": "A book-like viewer to read separate manga page images posted on SNS like reading a real book. Yet only supports weibo.",
   "action": {
     "default_title": "Popup",
     "default_popup": "index.html",

@@ -10,7 +10,7 @@
   opacity: 1;
 }
 
-#manga-viewer-btn {
+.EntryButton {
   display: inline-block;
   height: 18px;
   padding: 0 3px;
@@ -26,7 +26,21 @@
   cursor: pointer;
 }
 
-#manga-viewer-btn:hover {
+.EntryButton:hover {
   border-color: #aaa;
   color: #aaa;
+}
+
+.Button {
+  color: gray;
+  font-size: 2em;
+  font-weight: bolder;
+  margin: 10px;
+
+  user-select: none;
+  cursor: pointer;
+}
+
+.Button:hover {
+  color: #ddd;
 }

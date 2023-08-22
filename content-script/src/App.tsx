@@ -12,11 +12,8 @@ function App() {
   const [width, height] = useWindowSize();
   const [visible, setVisible] = React.useState<boolean>(false);
   const [urls, setUrls] = React.useState<string[]>([]);
-
-
-  const close = () => {
-    setVisible(false);
-  }
+  const [direction, setDirection] = React.useState<'rtl'|'ltr'>('rtl');
+  const [start1side, setStart1side] = React.useState<boolean>(false);
 
 
   const init = () => {
@@ -34,7 +31,7 @@ function App() {
         // Create button
         const btn = document.createElement('button');
         btn.innerHTML = 'Manga View';
-        btn.id = 'manga-viewer-btn'
+        btn.className = 'EntryButton';
         btn.onclick = () => {
           setVisible(true);
 
@@ -63,6 +60,21 @@ function App() {
 
   }
 
+  const close = () => {
+    setVisible(false);
+  }
+
+  const switchDirection = () => {
+    if (direction==='rtl')
+      setDirection('ltr');
+    else
+      setDirection('rtl');
+  }
+
+  const switchStart1side = () => {
+    setStart1side(!start1side);
+  }
+
 
   React.useLayoutEffect(()=>{
     const rootElement = document.getElementById('app');
@@ -88,9 +100,24 @@ function App() {
 
   if (visible) return (
     <div className='App' style={{visibility: visible?'visible':'hidden'}}>
-      <MangaViewer width={width} height={height} urls={urls} noLoading={false}></MangaViewer>
-      <div style={{position: 'absolute', left: 0, top: 0, cursor: 'pointer'}}>
-        <span style={{color: 'gray', fontSize: '2em', fontWeight: 'bolder', margin: '10px'}} onClick={close}>✕</span>
+      <MangaViewer
+        width={width}
+        height={height}
+        urls={urls}
+        direction={direction}
+        start_1side={start1side}
+        noLoading={false}
+      ></MangaViewer>
+
+      <div style={{position: 'absolute', right: '10px', top: 0}}>
+        <span className='Button' onClick={switchDirection}>{direction==='rtl'? 'RtoL': 'LtoR'}</span>
+        <span style={{marginRight: '20px'}}></span>
+        <span className='Button' onClick={switchStart1side}>{start1side? 'Sided': 'Spread'}</span>
+      </div>
+
+      {/* Close */}
+      <div style={{position: 'absolute', left: 0, top: 0}}>
+        <span className='Button' onClick={close}>✕</span>
       </div>
     </div>
   )
