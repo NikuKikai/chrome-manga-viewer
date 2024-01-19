@@ -12,16 +12,16 @@ function App() {
   const [width, height] = useWindowSize();
   const [visible, setVisible] = React.useState<boolean>(false);
   const [urls, setUrls] = React.useState<string[]>([]);
-  const [direction, setDirection] = React.useState<'rtl'|'ltr'>('rtl');
+  const [direction, setDirection] = React.useState<'rtl' | 'ltr'>('rtl');
   const [start1side, setStart1side] = React.useState<boolean>(false);
 
 
   const init = () => {
-    setTimeout(()=>{
+    setTimeout(() => {
       // Insert button
       const heads = document.getElementsByClassName('head-info_time_6sFQg');  // NOTE not suitable for retweet
       const boxs = document.getElementsByClassName('woo-box-wrap');
-      for (let ibox=0; ibox<boxs.length; ibox++) {
+      for (let ibox = 0; ibox < boxs.length; ibox++) {
         const box = boxs.item(ibox)! as HTMLDivElement;
         const head = heads.item(ibox)!;
         const parent = head.parentElement! as HTMLDivElement;
@@ -40,7 +40,7 @@ function App() {
 
           const _urls = [] as string[];
 
-          for (let i=0; i<divs.length; i++) {
+          for (let i = 0; i < divs.length; i++) {
             const div = divs.item(i) as HTMLDivElement;
             // if (div.getElementsByClassName('picture_picNum_3r6Z2').length > 0) { // Means more images hidden  // TODO
             // }
@@ -65,7 +65,7 @@ function App() {
   }
 
   const switchDirection = () => {
-    if (direction==='rtl')
+    if (direction === 'rtl')
       setDirection('ltr');
     else
       setDirection('rtl');
@@ -76,7 +76,7 @@ function App() {
   }
 
 
-  React.useLayoutEffect(()=>{
+  React.useLayoutEffect(() => {
     const rootElement = document.getElementById('app');
     const observer = new MutationObserver(mutations => {
       mutations.forEach(mutation => {
@@ -99,7 +99,7 @@ function App() {
 
 
   if (visible) return (
-    <div className='App' style={{visibility: visible?'visible':'hidden'}}>
+    <div className='App' style={{ visibility: visible ? 'visible' : 'hidden' }}>
       <MangaViewer
         width={width}
         height={height}
@@ -107,16 +107,17 @@ function App() {
         direction={direction}
         start_1side={start1side}
         noLoading={false}
+        divideAspect={1.41}
       ></MangaViewer>
 
-      <div style={{position: 'absolute', right: '10px', top: 0}}>
-        <span className='Button' onClick={switchDirection}>{direction==='rtl'? 'RtoL': 'LtoR'}</span>
-        <span style={{marginRight: '20px'}}></span>
-        <span className='Button' onClick={switchStart1side}>{start1side? 'Sided': 'Spread'}</span>
+      <div style={{ position: 'absolute', right: '10px', top: 0 }}>
+        <span className='Button' onClick={switchDirection}>{direction === 'rtl' ? 'RtoL' : 'LtoR'}</span>
+        <span style={{ marginRight: '20px' }}></span>
+        <span className='Button' onClick={switchStart1side}>{start1side ? 'Sided' : 'Spread'}</span>
       </div>
 
       {/* Close */}
-      <div style={{position: 'absolute', left: 0, top: 0}}>
+      <div style={{ position: 'absolute', left: 0, top: 0 }}>
         <span className='Button' onClick={close}>✕</span>
       </div>
     </div>
