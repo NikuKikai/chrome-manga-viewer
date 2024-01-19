@@ -2,23 +2,32 @@
 
 Created from yosevu's template https://github.com/yosevu/react-content-script/tree/main
 
-## Setup
+## For user
 
-### Get react-manga-viewer
+#### Chrome Web Store
 
-> Not published yet, so you need to download it manually.
+https://chromewebstore.google.com/detail/manga-viewer/aoikkiamdjnipechicmgjinpnngiapjo
 
-https://github.com/NikuKikai/react-manga-viewer/releases
+#### Manual install
 
-Edit corresponding path in `package.json`.
+- Get package(zip) from [release page](https://github.com/NikuKikai/react-manga-viewer/releases) and unzip.
+- Open Chrome extension manager, install.
 
-### Install dependencies
+
+## For developer
+
+#### Get `react-manga-viewer`
+
+- Get it from [here](https://github.com/NikuKikai/react-manga-viewer/releases).
+- Edit corresponding path in `package.json`.
+
+#### Install dependencies
 
 ```sh
 yarn
 ```
 
-### Build extension
+#### Build extension
 
 ```sh
 yarn build
